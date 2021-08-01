@@ -18,6 +18,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+    // このユーザが所有する投稿
+    public function microposts()
+    {
+        return $this->hasMany(Micropost::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    // このユーザに関係するモデルの件数をロードする
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('microposts');
+    }
 }
