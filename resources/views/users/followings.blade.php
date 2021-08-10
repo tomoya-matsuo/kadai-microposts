@@ -4,7 +4,7 @@
     <div class="row">
         <aside class="col-sm-4">
             {{--ユーザ一覧--}}
-            @include('user.card')
+            @include('users.card')
         </aside>
         <div class="col-sm-8">
             {{--タブ--}}
