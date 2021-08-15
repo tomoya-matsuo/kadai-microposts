@@ -13,6 +13,7 @@
                     <div>
                         {{-- 投稿内容 --}}
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
+                     
                     </div>
                     <div>
                         @if (Auth::id() ==$micropost->user_id)
@@ -21,10 +22,15 @@
                                 {!! Form::submit('Delete',['class' => 'btn btn-danger btn-sm']) !!}
                             {!! Form::close() !!}    
                         @endif    
+                        
                     </div>
+                       {{--お気に入り/お気にいり解除ボタン--}}
+                        @include('favorites.favorite_button') 
                 </div>
+                
             </li>
         @endforeach
+        
     </ul>
     {{-- ページネーションのリンク --}}
     {{ $microposts->links() }}
